@@ -90,7 +90,6 @@ const submit = () => {
                     Log in
                 </PrimaryButton>
 
-                <Button variant="destructive" >Click me</Button>
             </div>
         </form>
     </GuestLayout>
