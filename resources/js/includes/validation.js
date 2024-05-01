@@ -11,6 +11,7 @@ import {
     max,
     alpha_spaces as alphaSpaces,
     email,
+    alpha_dash as alphaDash,
     min_value as minVal,
     max_value as maxVal,
     confirmed,
@@ -27,6 +28,7 @@ function minDate(value) {
 
     return userDate >= today;
 }
+
 
 // Datum a čas není v minulosti
 function minTime(value, [relatedDate]) {
@@ -54,6 +56,8 @@ export default {
 
         defineRule("numeric", numeric); // only numbers
         defineRule("required", required); //form required
+        defineRule('alphaDash', alphaDash); // only letters, numbers, dashes and underscores
+        defineRule('tos', required) //form required
         defineRule("min", min); // min lenght
         defineRule("max", max); // max lenght
         defineRule("alphaSpaces", alphaSpaces); // only letters and spaces
@@ -70,16 +74,17 @@ export default {
             generateMessage: (ctx) => {
                 const messages = {
                     required: `Pole ${ctx.field} je povinné.`,
-                    min: `Obsah ${ctx.field} je moc krátký.`,
+                    min: `Obsah ${ctx.field} je příliš krátký.`,
                     max: `Obsah ${ctx.field} je příliš dlouhý.`,
-                    alphaSpaces: `The field ${ctx.field} may only contain alphabetical characters and spaces.`,
-                    email: `The field ${ctx.field} must be a valid email.`,
+                    alphaSpaces: `Pole ${ctx.field} může obsahovat pouze písmena a mezery.`,
+                    alphaDash: `Pole ${ctx.field} může obsahovat pouze písmena, čísla, pomlčky nebo podtržítka.`,
+                    email: `Pole ${ctx.field} musí být platná e-mailová adresa.`,
                     minVal: `Hodnota ${ctx.field} je příliš nízká.`,
                     maxVal: `Hodnota ${ctx.field} je příliš vysoká.`,
-                    excluded: `You are not allowed to use this value for the field ${ctx.field}.`,
-                    countryExcluded: `Due to restrctions, we do not accept users from this location.`,
-                    passwordMismatch: `The passwords dont match.`,
-                    tos: `You must accept the Terms of Service.`,
+                    excluded: `Nemůžete použít tuto hodnotu pro pole ${ctx.field}.`,
+                    countryExcluded: `Z důvodu omezení nepřijímáme uživatele z této lokality.`,
+                    passwordMismatch: `Hesla se neshodují.`,
+                    tos: `Musíte přijmout Smluvní podmínky.`,
                     minDate: `Datum nesmí být v minulosti.`,
                     minTime: `Čas nesmí být v minulosti.`,
                 };
@@ -90,9 +95,9 @@ export default {
                 return message;
             },
             validateOnBlur: true,
-            validateOnChange: true,
+            validateOnChange: false,
             validateOnInput: false,
-            validateOnModelUpdate: true,
+            validateOnModelUpdate: false,
         });
     },
 };

@@ -24,8 +24,28 @@ module.exports = {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
+
+        
+        
+        
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        action: {
+          DEFAULT: 'hsl(var(--action))',
+          foreground: 'hsl(var(--action-foreground))',
+        },
+        orange: {
+          DEFAULT: 'hsl(var(--orange))',
+          foreground: 'hsl(var(--orange-foreground))',
+        },
+        yellow: {
+          DEFAULT: 'hsl(var(--yellow))',
+          foreground: 'hsl(var(--yellow-foreground))',
+        },
+        purple: {
+          DEFAULT: 'hsl(var(--purple))',
+          foreground: 'hsl(var(--purple-foreground))',
+        },        
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
@@ -61,7 +81,7 @@ module.exports = {
         sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
-        sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+        sans: ['Rubik', ...defaultTheme.fontFamily.sans],
       },
       keyframes: {
         'accordion-down': {

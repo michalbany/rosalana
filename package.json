@@ -18,8 +18,10 @@
         "vue": "^3.4.0"
     },
     "dependencies": {
+        "@formkit/auto-animate": "^0.8.2",
         "@radix-icons/vue": "^1.0.0",
         "@vee-validate/rules": "^4.12.6",
+        "@vueuse/core": "^10.9.0",
         "boxicons": "^2.1.4",
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.1.1",

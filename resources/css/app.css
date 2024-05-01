@@ -5,6 +5,22 @@
 
 @layer base {
   :root {
+    /**
+    * Vlasní barvy
+    */
+
+    --action: 243 71% 58%;
+    --action-foreground: 0 0% 98%;
+
+    --orange: 14 100% 70%;
+    --orange-foreground: 0 0% 98%;
+    
+    --yellow: 40 100% 66% 
+    --yellow-foreground: 0 0% 98%;
+ 
+    --purple: 243 100% 68%;
+    --purple-foreground: 0 0% 98%;
+    
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
  
@@ -29,7 +45,7 @@
     --accent: 240 4.8% 95.9%;
     --accent-foreground: 240 5.9% 10%;
  
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 351 100% 68%;
     --destructive-foreground: 0 0% 98%;
  
     --ring: 240 10% 3.9%;
