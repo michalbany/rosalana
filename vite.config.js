@@ -10,6 +10,9 @@ export default defineConfig({
         }),
         vue({
             template: {
+                compilerOptions: {
+                    isCustomElement: (tag) => tag.includes('box-icon')
+                },
                 transformAssetUrls: {
                     base: null,
                     includeAbsolute: false,
