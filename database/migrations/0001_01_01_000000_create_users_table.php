@@ -13,8 +13,15 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('username')->unique();
             $table->string('email')->unique();
+            $table->string('profile_photo_path', 2048)->nullable();
+            $table->text('bio')->nullable();
+            $table->integer('rank_points')->default(0);
+            $table->boolean('rank_modal_shown')->default(false);
+            $table->integer('last_rank_shown')->default(1); // rank bude asociativni pole s hodnotami - kvůli jazykovým mutacím
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
