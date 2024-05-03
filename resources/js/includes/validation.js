@@ -77,7 +77,7 @@ export default {
                     min: `Obsah ${ctx.field} je příliš krátký.`,
                     max: `Obsah ${ctx.field} je příliš dlouhý.`,
                     alphaSpaces: `Pole ${ctx.field} může obsahovat pouze písmena a mezery.`,
-                    alphaDash: `Pole ${ctx.field} může obsahovat pouze písmena, čísla, pomlčky nebo podtržítka.`,
+                    alphaDash: `Pole ${ctx.field} může obsahovat znaky a-Z, 0-9, -, _`,
                     email: `Pole ${ctx.field} musí být platná e-mailová adresa.`,
                     minVal: `Hodnota ${ctx.field} je příliš nízká.`,
                     maxVal: `Hodnota ${ctx.field} je příliš vysoká.`,
