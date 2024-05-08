@@ -23,7 +23,7 @@ return new class extends Migration
             $table->boolean('rank_modal_shown')->default(false);
             $table->integer('last_rank_shown')->default(1); // rank bude asociativni pole s hodnotami - kvůli jazykovým mutacím
             $table->timestamp('email_verified_at')->nullable();
-            $table->boolean('tos_accepted')->default(false);
+            $table->boolean('tos_accepted');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

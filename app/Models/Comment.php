@@ -17,4 +17,25 @@ class Comment extends Model
         'quote',
         'mentions',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function commentable()
+    {
+        return $this->morphTo();
+    }
+
+    /** polymorfni relace */
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'likeable');
+    }
+
+    // public function bookmarks()
+    // {
+    //     return $this->morphMany(Bookmark::class, 'bookmarkable');
+    // }
 }

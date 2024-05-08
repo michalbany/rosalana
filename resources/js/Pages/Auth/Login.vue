@@ -103,7 +103,7 @@ const submit = () => {
                     class="py-6 px-4"
                     />
                     
-                    <button type="button"
+                    <button type="button" tabindex="-1"
                     @click="passwordshow = !passwordshow"
                     class="flex absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer fill-action transition hover:fill-action/90"
                     >

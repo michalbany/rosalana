@@ -13,4 +13,6 @@ class Follow extends Model
         'user_id',
         'follower_id',
     ];
+
+    /**@remove: tuto třídu nepotřebujeme */
 }

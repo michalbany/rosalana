@@ -98,7 +98,7 @@ const submit = () => {
                         <VeeField v-model="form.password" name="password" :type="passwordshow ? 'text' : 'password'"
                             :as="Input" placeholder="Heslo" class="py-6 px-4" />
 
-                        <button type="button" @click="passwordshow = !passwordshow"
+                        <button tabindex="-1" type="button" @click="passwordshow = !passwordshow"
                             class="flex absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer fill-action transition hover:fill-action/90">
                             <box-icon :name="passwordshow ? 'hide' : 'show'" type="solid" />
                         </button>
@@ -114,7 +114,7 @@ const submit = () => {
                             :type="passwordshow ? 'text' : 'password'" :as="Input" placeholder="Znovu heslo"
                             class="py-6 px-4" />
 
-                        <button type="button" @click="passwordshow = !passwordshow"
+                        <button tabindex="-1" type="button" @click="passwordshow = !passwordshow"
                             class="flex absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer fill-action transition hover:fill-action/90">
                             <box-icon :name="passwordshow ? 'hide' : 'show'" type="solid" />
                         </button>

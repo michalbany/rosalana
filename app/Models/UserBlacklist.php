@@ -13,4 +13,14 @@ class UserBlacklist extends Model
         'user_id',
         'blacklisted_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function blockedUser()
+    {
+        return $this->belongsTo(User::class, 'blocked_user_id');
+    }
 }

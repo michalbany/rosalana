@@ -14,4 +14,22 @@ class UserPrivacySettings extends Model
         'privacy_key',
         'privacy_value',
     ];
+
+
+    public static function defaults()
+    {
+        return [
+            'profile_visibility' => 'public',
+            'email_visibility' => 'public',
+            'connected_apps' => [
+                'facebook' => false,
+                'twitter' => false,
+                'google' => false,
+            ],
+        ];
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

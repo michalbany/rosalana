@@ -14,4 +14,14 @@ class View extends Model
         'viewable_id',
         'viewable_type',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function viewable()
+    {
+        return $this->morphTo();
+    }
 }

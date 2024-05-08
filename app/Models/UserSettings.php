@@ -14,4 +14,28 @@ class UserSettings extends Model
         'settings_key',
         'settings_value',
     ];
+
+    public static function defaults()
+    {
+        return [
+            'theme' => 'light',
+            'accessibility' => 'normal', // @add: Přidáme accessibility
+            'language' => 'en', // @todo: Přepíšeme aplikaci do en pravděpodobně v defaults
+            'currency' => 'EUR',
+            'locale' => 'en',
+            'timezone' => 'UTC',
+            'newsletter' => true,
+            'notifications' => [
+                'email' => true,
+                'push' => true,
+            ],
+        ];
+    }
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
 }

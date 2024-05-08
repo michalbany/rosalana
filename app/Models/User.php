@@ -27,6 +27,7 @@ class User extends Authenticatable
         'rank_points',
         'rank_modal_shown',
         'last_rank_shown',
+        'tos_accepted',
     ];
 
     /**
@@ -38,6 +39,93 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    /**
+     * Elquent relationships
+     */
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+    
+    public function collections()
+    {
+        return $this->hasMany(Collection::class);
+    }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'followed_user_id', 'user_id');
+    }
+
+    public function following()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'user_id', 'followed_user_id');
+    }
+
+    /** polymorfni relace */
+    
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function likedPosts()
+    {
+        return $this->morphedByMany(Post::class, 'likeable');
+    }
+
+    public function likedComments()
+    {
+        return $this->morphedByMany(Comment::class, 'likeable');
+    }
+
+    public function views()
+    {
+        return $this->hasMany(View::class);
+    }
+
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class);
+    }
+
+    public function bookmarkedPosts()
+    {
+        return $this->morphedByMany(Post::class, 'bookmarkable');
+    }
+
+    // public function bookmarkedComments()
+    // {
+    //     return $this->morphedByMany(Comment::class, 'bookmarkable');
+    // }
+
+    /** settings */
+    public function settings()
+    {
+        return $this->hasMany(UserSettings::class);
+    }
+
+    public function privacySettings()
+    {
+        return $this->hasMany(UserPrivacySettings::class);
+    }
+
+    public function allSettings()
+    {
+        return $this->hasMany(UserSettings::class)->union($this->hasMany(UserPrivacySettings::class));
+    }
+
+    public function blacklist()
+    {
+        return $this->hasMany(UserBlacklist::class);
+    }
 
     /**
      * Get the attributes that should be cast.
