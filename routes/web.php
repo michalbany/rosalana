@@ -24,8 +24,14 @@ use Inertia\Inertia;
  */
 Route::get('/', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');  
 
+// @todo: zeptat se chata jak to dělat když potřebuju na stránku data z více zdrojů (např. posts a collections, nebo posts a users to follow)
+
+
+Route::get('/settings', function () {
+    return Inertia::render('Settings/Index');
+})->middleware(['auth', 'verified'])->name('settings');
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/post/{post}', [PostController::class, 'show'])->name('post.show');
