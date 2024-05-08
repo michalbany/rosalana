@@ -145,7 +145,35 @@ const showingNavigationDropdown = ref(false);
                         :href="route('dashboard')"
                         :active="route().current('dashboard')"
                     >
-                        Dashboard
+                        Hlavní strana
+                    </ResponsiveNavLink>
+
+                    <ResponsiveNavLink
+                        :href="route('profile.edit')"
+                        :active="route().current('profile.edit')"
+                    >
+                    Profile
+                    </ResponsiveNavLink>
+
+                    <ResponsiveNavLink
+                        :href="route('login')"
+                        :active="route().current('login')"
+                    >
+                    Záložky
+                    </ResponsiveNavLink>
+
+                    <ResponsiveNavLink
+                        :href="route('login')"
+                        :active="route().current('login')"
+                    >
+                    Sbírky
+                    </ResponsiveNavLink>
+                    
+                    <ResponsiveNavLink
+                        :href="route('login')"
+                        :active="route().current('login')"
+                    >
+                    Objevuj
                     </ResponsiveNavLink>
                 </div>
 
@@ -178,9 +206,9 @@ const showingNavigationDropdown = ref(false);
         </nav>
 
         <div
-            class="max-w-7xl mx-auto py-6 px-4 sm:py-6 lg:px-8 grid grid-cols-9 gap-6"
+            class="max-w-7xl mx-auto py-6 px-4 sm:py-6 lg:px-8 grid grid-cols-1 sm:grid-cols-9 gap-6"
         >
-            <nav class="col-span-2 flex flex-col gap-4">
+            <nav class="sm:col-span-2 hidden sm:flex flex-col gap-4">
                 <NavLink
                     :href="route('dashboard')"
                     :active="route().current('dashboard')"
@@ -233,7 +261,7 @@ const showingNavigationDropdown = ref(false);
                 </Button>
             </nav>
 
-            <div class="col-span-5">
+            <div class="sm:col-span-5">
                 <!-- Page Heading -->
                 <!-- <header v-if="$slots.header"> -->
                 <header v-if="$slots.header">
@@ -305,7 +333,7 @@ const showingNavigationDropdown = ref(false);
                 </main>
             </div>
 
-            <div class="col-span-2">
+            <div class="hidden sm:block sm:col-span-2">
                 <!-- Title -->
                 <div class="flex mb-6 gap-3 items-center">
                     <Badge>
