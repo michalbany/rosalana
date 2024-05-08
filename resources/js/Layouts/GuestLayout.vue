@@ -37,8 +37,8 @@ import WelcomeImage from "../../images/static/welcome.png";
                     </Badge>
 
                     <div class="leading-5">
-                        <h3 class="font-bold">Probuď svoji kreativitu</h3>
-                        <p>Začni nyní</p>
+                        <h3 class="font-bold">Awaken your creativity</h3>
+                        <p>Start now</p>
                     </div>
                 </div>
 
@@ -74,7 +74,7 @@ import WelcomeImage from "../../images/static/welcome.png";
                             class="text-white flex gap-2 items-center"
                             >
                             <box-icon name="trip" class="w-5 fill-purple" />
-                            O projektu
+                            About
                         </Button>
                         <Button
                             variant="anchor"
@@ -83,7 +83,7 @@ import WelcomeImage from "../../images/static/welcome.png";
                             class="text-white flex gap-2 items-center"
                             >
                             <box-icon name="bug-alt" type="solid" class="w-5 fill-orange" />
-                            Nahlásit problém
+                            Report a Problem
                         </Button>
                         <Button
                             variant="anchor"
@@ -91,8 +91,8 @@ import WelcomeImage from "../../images/static/welcome.png";
                             :href="route('dashboard')"
                             class="text-white flex gap-2 items-center"
                             >
-                            <box-icon name="trip" class="w-5 fill-destructive" />
-                            O projektu
+                            <box-icon name="first-aid" type="solid" class="w-5 fill-destructive" />
+                            Support
                         </Button>
                     </div>
                     
@@ -102,8 +102,8 @@ import WelcomeImage from "../../images/static/welcome.png";
 
                 <div class="text-center text-sm text-gray-500 mt-8">
                     <p>
-                        &copy; Rosalana 2023 - {{ new Date().getFullYear() }}. Všechna
-                        práva vyhrazena.
+                        &copy; Rosalana 2023 - {{ new Date().getFullYear() }}. All
+                        rights reserved.
                     </p>
                 </div>
             </div>

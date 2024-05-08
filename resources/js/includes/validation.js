@@ -73,20 +73,20 @@ export default {
         configure({
             generateMessage: (ctx) => {
                 const messages = {
-                    required: `Pole ${ctx.field} je povinné.`,
-                    min: `Obsah ${ctx.field} je příliš krátký.`,
-                    max: `Obsah ${ctx.field} je příliš dlouhý.`,
-                    alphaSpaces: `Pole ${ctx.field} může obsahovat pouze písmena a mezery.`,
-                    alphaDash: `Pole ${ctx.field} může obsahovat znaky a-Z, 0-9, -, _`,
-                    email: `Pole ${ctx.field} musí být platná e-mailová adresa.`,
-                    minVal: `Hodnota ${ctx.field} je příliš nízká.`,
-                    maxVal: `Hodnota ${ctx.field} je příliš vysoká.`,
-                    excluded: `Nemůžete použít tuto hodnotu pro pole ${ctx.field}.`,
-                    countryExcluded: `Z důvodu omezení nepřijímáme uživatele z této lokality.`,
-                    passwordMismatch: `Hesla se neshodují.`,
-                    tos: `Musíte přijmout Smluvní podmínky.`,
-                    minDate: `Datum nesmí být v minulosti.`,
-                    minTime: `Čas nesmí být v minulosti.`,
+                    required: `${ctx.field} is required.`,
+                    min: `${ctx.field} is too short.`,
+                    max: `${ctx.field} is too long.`,
+                    alphaSpaces: `${ctx.field} can only contain letters and spaces.`,
+                    alphaDash: `${ctx.field} can only contain characters a-Z, 0-9, -, _`,
+                    email: `${ctx.field} must be a valid email address.`,
+                    minVal: `${ctx.field} is too low.`,
+                    maxVal: `${ctx.field} is too high.`,
+                    excluded: `You cannot use this value for the field ${ctx.field}.`,
+                    countryExcluded: `Due to restrictions, we do not accept users from this location.`,
+                    passwordMismatch: `Passwords do not match.`,
+                    tos: `You must accept the Terms of Service.`,
+                    minDate: `The date must not be in the past.`,
+                    minTime: `The time must not be in the past.`,
                 };
                 const message = messages[ctx.rule.name]
                     ? messages[ctx.rule.name]

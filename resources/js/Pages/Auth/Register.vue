@@ -20,8 +20,8 @@ const form = useForm({
 const passwordshow = ref(false);
 
 const schema = computed(() => ({
-    first_name: 'required|alphaSpaces',
-    last_name: 'required|alphaSpaces',
+    "first name": 'required|alphaSpaces',
+    "last name": 'required|alphaSpaces',
     email: 'required|email',
     username: 'required|alphaDash',
     password: 'required|min:8',
@@ -39,15 +39,15 @@ const submit = () => {
 <template>
     <GuestLayout>
 
-        <Head title="Registrace" />
+        <Head title="Registration" />
 
         <template #header>
-            Registrace
+            Registration
         </template>
 
         <template #nav-button>
             <Button :as="Link" :href="route('login')" size="action" variant="action">
-                <p>Přihlásit se</p>
+                <p>Log In</p>
             </Button>
         </template>
 
@@ -57,19 +57,19 @@ const submit = () => {
 
             <div class="flex justify-between flex-col lg:flex-row">
                 <div class="relative mb-8" v-auto-animate>
-                    <VeeField v-model="form.first_name" name="first_name" type="text" :as="Input" placeholder="Jméno"
+                    <VeeField v-model="form.first_name" name="first name" type="text" :as="Input" placeholder="First name"
                         class="py-6 px-4" autofocus />
 
                     <InputError class="my-2" :message="form.errors.first_name" />
-                    <ErrorMessage name="first_name" class="mt-1 absolute text-destructive text-sm" />
+                    <ErrorMessage name="first name" class="mt-1 absolute text-destructive text-sm" />
                 </div>
 
                 <div class="relative mb-8" v-auto-animate>
-                    <VeeField v-model="form.last_name" name="last_name" type="text" :as="Input" placeholder="Příjmení"
+                    <VeeField v-model="form.last_name" name="last name" type="text" :as="Input" placeholder="Last name"
                         class="py-6 px-4" autofocus />
 
                     <InputError class="my-2" :message="form.errors.last_name" />
-                    <ErrorMessage name="last_name" class="mt-1 absolute text-destructive text-sm" />
+                    <ErrorMessage name="last name" class="mt-1 absolute text-destructive text-sm" />
                 </div>
             </div>
 
@@ -96,7 +96,7 @@ const submit = () => {
                 <div class="sm:mb-3 mb-8" v-auto-animate>
                     <div class="relative">
                         <VeeField v-model="form.password" name="password" :type="passwordshow ? 'text' : 'password'"
-                            :as="Input" placeholder="Heslo" class="py-6 px-4" />
+                            :as="Input" placeholder="Password" class="py-6 px-4" />
 
                         <button tabindex="-1" type="button" @click="passwordshow = !passwordshow"
                             class="flex absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer fill-action transition hover:fill-action/90">
@@ -111,7 +111,7 @@ const submit = () => {
                 <div class="mb-3" v-auto-animate>
                     <div class="relative">
                         <VeeField v-model="form.password_confirmation" name="password_confirmation"
-                            :type="passwordshow ? 'text' : 'password'" :as="Input" placeholder="Znovu heslo"
+                            :type="passwordshow ? 'text' : 'password'" :as="Input" placeholder="Confirm password"
                             class="py-6 px-4" />
 
                         <button tabindex="-1" type="button" @click="passwordshow = !passwordshow"
@@ -136,7 +136,7 @@ const submit = () => {
 
                     <label for="tos"
                         class="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                        Souhlasím se <a class="text-action">Smluvními podmínkami</a>
+                        I agree to the <a class="text-action">Terms and Conditions</a>
                     </label>
                 </div>
 

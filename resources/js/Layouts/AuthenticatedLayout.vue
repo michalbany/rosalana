@@ -145,7 +145,7 @@ const showingNavigationDropdown = ref(false);
                         :href="route('dashboard')"
                         :active="route().current('dashboard')"
                     >
-                        Hlavní strana
+                        Feeds
                     </ResponsiveNavLink>
 
                     <ResponsiveNavLink
@@ -159,21 +159,21 @@ const showingNavigationDropdown = ref(false);
                         :href="route('login')"
                         :active="route().current('login')"
                     >
-                    Záložky
+                    Bookmarks
                     </ResponsiveNavLink>
 
                     <ResponsiveNavLink
                         :href="route('login')"
                         :active="route().current('login')"
                     >
-                    Sbírky
+                    Collections
                     </ResponsiveNavLink>
                     
                     <ResponsiveNavLink
                         :href="route('login')"
                         :active="route().current('login')"
                     >
-                    Objevuj
+                    Explore
                     </ResponsiveNavLink>
                 </div>
 
@@ -214,7 +214,7 @@ const showingNavigationDropdown = ref(false);
                     :active="route().current('dashboard')"
                     icon="home"
                 >
-                    Hlavní strana
+                    Feeds
                 </NavLink>
 
                 <NavLink
@@ -230,7 +230,7 @@ const showingNavigationDropdown = ref(false);
                     :active="route().current('login')"
                     icon="bookmark"
                 >
-                    Záložky
+                    Bookmarks
                 </NavLink>
 
                 <NavLink
@@ -238,7 +238,7 @@ const showingNavigationDropdown = ref(false);
                     :active="route().current('login')"
                     icon="folder"
                 >
-                    Sbírky
+                    Collections
                 </NavLink>
 
                 <NavLink
@@ -246,13 +246,13 @@ const showingNavigationDropdown = ref(false);
                     :active="route().current('login')"
                     icon="compass"
                 >
-                    Objevuj
+                    Explore
                 </NavLink>
 
                 <hr class="mt-6 mb-3" />
 
                 <Button variant="action" size="action">
-                    Nový příspěvek
+                    Write a post
                     <box-icon
                         name="pen"
                         type="solid"
@@ -345,8 +345,8 @@ const showingNavigationDropdown = ref(false);
                     </Badge>
 
                     <div class="leading-5">
-                        <h3 class="font-bold">Další uživatelé</h3>
-                        <p>Poznej více lidí</p>
+                        <h3 class="font-bold">More users</h3>
+                        <p>Meet more people</p>
                     </div>
                 </div>
 

@@ -39,10 +39,10 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Přihlášení" />
+        <Head title="Log In" />
 
         <template #header>
-            Přihlásit
+            Log In
         </template>
 
         <template #nav-button>
@@ -52,7 +52,7 @@ const submit = () => {
             size="action"
             variant="action"
             class="hidden lg:inline-flex md:inline-flex">
-                <p>Registrovat<span class="font-normal"> - Zdarma</span></p>
+                <p>Register<span class="font-normal"> - For free</span></p>
             </Button>
 
             <Button
@@ -61,7 +61,7 @@ const submit = () => {
             size="action"
             variant="action"
             class="inline-flex lg:hidden md:hidden">
-                <p>Registrovat</p>
+                <p>Registration</p>
             </Button>
 
         </template>
@@ -99,7 +99,7 @@ const submit = () => {
                     name="password"
                     :type="passwordshow ? 'text' : 'password'"
                     :as="Input"
-                    placeholder="Heslo"
+                    placeholder="Password"
                     class="py-6 px-4"
                     />
                     
@@ -120,17 +120,17 @@ const submit = () => {
 
             <div class="flex items-center space-x-2">
                 <Checkbox id="remember" v-model:checked="form.remember" class="border-action data-[state=checked]:bg-action data-[state=checked]:text-action-foreground"/>
-                <label for="remember" class="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Pamatuj si mě</Label>
+                <label for="remember" class="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Remember me</Label>
             </div>
 
             <div class="mt-9 flex">
                 <Button :disabled="form.processing" size="action" variant="action" type="submit" class="w-full max-w-44">
-                    Přihlásit se
+                    Log In
                 </Button>
                 <Button variant="link" :as="Link"
                     v-if="canResetPassword"
                     :href="route('password.request')">
-                    Zapomenuté heslo?<box-icon name='right-arrow-alt' class="-rotate-45" ></box-icon>
+                    Forgot password?<box-icon name='right-arrow-alt' class="-rotate-45" ></box-icon>
                 </Button>
             </div>
         </VeeForm>
