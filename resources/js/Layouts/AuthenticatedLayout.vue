@@ -18,7 +18,7 @@ const showingNavigationDropdown = ref(false);
         class="min-h-screen bg-white selection:bg-action selection:text-accent"
     >
         <!-- Navigace -->
-        <nav class="w-full">
+        <nav class="w-full sticky top-0 bg-white sm:bg-transparent z-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-24">
                     <Link href="/">
@@ -74,7 +74,7 @@ const showingNavigationDropdown = ref(false);
                                 </template>
 
                                 <template #content>
-                                    <DropdownLink :href="route('profile.edit')">
+                                    <DropdownLink :href="route('settings.profile.edit')">
                                         Profile
                                     </DropdownLink>
                                     <DropdownLink :href="route('settings')">
@@ -152,8 +152,8 @@ const showingNavigationDropdown = ref(false);
                     </ResponsiveNavLink>
 
                     <ResponsiveNavLink
-                        :href="route('profile.edit')"
-                        :active="route().current('profile.edit')"
+                        :href="route('settings.profile.edit')"
+                        :active="route().current('settings.profile.edit')"
                     >
                     Profile
                     </ResponsiveNavLink>
@@ -193,7 +193,7 @@ const showingNavigationDropdown = ref(false);
                     </div>
 
                     <div class="mt-3 space-y-1">
-                        <ResponsiveNavLink :href="route('profile.edit')">
+                        <ResponsiveNavLink :href="route('settings.profile.edit')">
                             Profile
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('settings')">
@@ -212,9 +212,10 @@ const showingNavigationDropdown = ref(false);
         </nav>
 
         <div
-            class="max-w-7xl mx-auto py-6 px-4 sm:py-6 lg:px-8 grid grid-cols-1 sm:grid-cols-9 gap-6"
-        >
-            <nav class="sm:col-span-2 hidden sm:flex flex-col gap-4">
+            class="relative max-w-7xl mx-auto py-6 px-4 sm:py-6 lg:px-8 grid grid-cols-1 sm:grid-cols-9 gap-6"
+            
+            >
+            <nav class="sm:col-span-2 hidden sm:flex flex-col gap-4 sticky top-[7.5rem] h-fit" >
                 <NavLink
                     :href="route('dashboard')"
                     :active="route().current('dashboard')"
@@ -224,8 +225,8 @@ const showingNavigationDropdown = ref(false);
                 </NavLink>
 
                 <NavLink
-                    :href="route('profile.edit')"
-                    :active="route().current('profile.edit')"
+                    :href="route('settings.profile.edit')"
+                    :active="route().current('settings.profile.edit')"
                     icon="user"
                 >
                     Profile
@@ -269,12 +270,11 @@ const showingNavigationDropdown = ref(false);
 
             <div class="sm:col-span-5">
                 <!-- Page Heading -->
-                <!-- <header v-if="$slots.header"> -->
                 <header v-if="$slots.header">
                     <div class="flex gap-3">
                         <Badge class="mt-2 shrink-0"
                             ><slot name="icon" /></Badge>
-                        <h1 class="font-semibold text-6xl text-primary">
+                        <h1 class="font-semibold text-5xl sm:text-6xl text-primary">
                             <slot name="header" />
                             <svg
                                 class="inline-block ml-4"
@@ -339,7 +339,7 @@ const showingNavigationDropdown = ref(false);
                 </main>
             </div>
 
-            <div class="hidden sm:block sm:col-span-2">
+            <div class="hidden sm:block sm:col-span-2 sticky top-[7.5rem] h-fit">
                 <!-- Title -->
                 <div class="flex mb-6 gap-3 items-center">
                     <Badge>

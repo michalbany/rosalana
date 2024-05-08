@@ -29,9 +29,32 @@ Route::get('/', function () {
 // @todo: zeptat se chata jak to dělat když potřebuju na stránku data z více zdrojů (např. posts a collections, nebo posts a users to follow)
 
 
-Route::get('/settings', function () {
-    return Inertia::render('Settings/Index');
-})->middleware(['auth', 'verified'])->name('settings');
+// Route::get('/settings', function () {
+//     return Inertia::render('Settings/Index');
+// })->middleware(['auth', 'verified'])->name('settings');
+
+
+// Route::get('/settings/profile', function () {
+
+// });
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::name('settings')->group(function () {
+        
+        Route::get('/settings', function () {
+            return Inertia::render('Settings/Index');
+        });
+
+        Route::get('/settings/profile', [ProfileController::class, 'edit'])->name('.profile.edit');
+        Route::patch('/settings/profile', [ProfileController::class, 'update'])->name('.profile.update');
+        Route::delete('/settings/profile', [ProfileController::class, 'destroy'])->name('.profile.destroy');
+        Route::get('/settings/password', function () {
+            return Inertia::render('Settings/YourAccount/ChangePassword');
+        })->name('.password.edit');
+        // toto necháme v auth.php
+        // Route::put('/settings/password', [PasswordController::class, 'update'])->name('.password.update');
+    });
+});
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/post/{post}', [PostController::class, 'show'])->name('post.show');
@@ -40,10 +63,10 @@ Route::get('/settings', function () {
 // });
 
 
-Route::middleware('auth')->group(function () { // @change: Tyto routes budou součástí settings
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () { // @change: Tyto routes budou součástí settings
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__.'/auth.php';

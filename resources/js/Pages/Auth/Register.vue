@@ -20,8 +20,8 @@ const form = useForm({
 const passwordshow = ref(false);
 
 const schema = computed(() => ({
-    "first name": 'required|alphaSpaces',
-    "last name": 'required|alphaSpaces',
+    "name": 'required|alphaSpaces',
+    "surname": 'required|alphaSpaces',
     email: 'required|email',
     username: 'required|alphaDash',
     password: 'required|min:8',
@@ -57,19 +57,19 @@ const submit = () => {
 
             <div class="flex justify-between flex-col lg:flex-row">
                 <div class="relative mb-8" v-auto-animate>
-                    <VeeField v-model="form.first_name" name="first name" type="text" :as="Input" placeholder="First name"
+                    <VeeField v-model="form.first_name" name="name" type="text" :as="Input" placeholder="Name"
                         class="py-6 px-4" autofocus />
 
                     <InputError class="my-2" :message="form.errors.first_name" />
-                    <ErrorMessage name="first name" class="mt-1 absolute text-destructive text-sm" />
+                    <ErrorMessage name="name" class="mt-1 absolute text-destructive text-sm" />
                 </div>
 
                 <div class="relative mb-8" v-auto-animate>
-                    <VeeField v-model="form.last_name" name="last name" type="text" :as="Input" placeholder="Last name"
-                        class="py-6 px-4" autofocus />
+                    <VeeField v-model="form.last_name" name="surname" type="text" :as="Input" placeholder="Surname"
+                        class="py-6 px-4" />
 
                     <InputError class="my-2" :message="form.errors.last_name" />
-                    <ErrorMessage name="last name" class="mt-1 absolute text-destructive text-sm" />
+                    <ErrorMessage name="surname" class="mt-1 absolute text-destructive text-sm" />
                 </div>
             </div>
 

@@ -25,10 +25,8 @@ class UserSettings extends Model
             'locale' => 'en',
             'timezone' => 'UTC',
             'newsletter' => true,
-            'notifications' => [
-                'email' => true,
-                'push' => true,
-            ],
+            'email_notifications' => true,
+            'push_notifications' => true,
         ];
     }
     
