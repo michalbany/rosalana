@@ -20,13 +20,10 @@ class UserSettings extends Model
         return [
             'theme' => 'light',
             'accessibility' => 'normal', // @add: Přidáme accessibility
-            'language' => 'en', // @todo: Přepíšeme aplikaci do en pravděpodobně v defaults
+            'language' => 'en',
             'currency' => 'EUR',
             'locale' => 'en',
             'timezone' => 'UTC',
-            'newsletter' => true,
-            'email_notifications' => true,
-            'push_notifications' => true,
         ];
     }
     

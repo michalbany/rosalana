@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,9 +15,14 @@ use Inertia\Response;
 class ProfileController extends Controller
 {
 
-    public function index() 
+    public function show(User $user) 
     {
-        //
+        $isOwnProfile = Auth::user()->id === $user->id;
+
+        return Inertia::render('Profile/Profile', [
+            'user' => $user->only('id', 'first_name', 'last_name', 'username', 'bio', 'email'),
+            'isOwnProfile' => $isOwnProfile,
+        ]);
     }
 
     /**

@@ -38,6 +38,11 @@ Route::get('/', function () {
 
 // });
 
+// Zobrazení profilu
+Route::get('/user/{user:username}', [ProfileController::class, 'show'])
+    ->name('profile.show')
+    ->middleware(['auth', 'verified']);
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::name('settings')->group(function () {
         

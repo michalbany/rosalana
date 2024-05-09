@@ -4,14 +4,6 @@ import UpdatePasswordForm from "./Partials/UpdatePasswordForm.vue";
 import { Head } from "@inertiajs/vue3";
 import { Input } from "@/Components/ui/input";
 
-defineProps({
-    mustVerifyEmail: {
-        type: Boolean,
-    },
-    status: {
-        type: String,
-    },
-});
 </script>
 
 <template>

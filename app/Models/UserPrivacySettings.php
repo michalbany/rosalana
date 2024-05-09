@@ -21,11 +21,13 @@ class UserPrivacySettings extends Model
         return [
             'profile_visibility' => 'public',
             'email_visibility' => 'public',
-            'connected_apps' => [
-                'facebook' => false,
-                'twitter' => false,
-                'google' => false,
-            ],
+            'facebook_connect' => false,
+            'twitter_connect' => false,
+            'google_connect' => false,
+            'activity_status' => true,
+            'newsletter' => true,
+            'email_notifications' => true,
+            'push_notifications' => true,
         ];
     }
 
