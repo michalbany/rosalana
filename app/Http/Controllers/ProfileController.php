@@ -20,7 +20,7 @@ class ProfileController extends Controller
         $isOwnProfile = Auth::user()->id === $user->id;
 
         return Inertia::render('Profile/Profile', [
-            'user' => $user->only('id', 'first_name', 'last_name', 'username', 'bio', 'email'),
+            'user' => $user->only('id', 'first_name', 'last_name', 'username', 'bio', 'email', 'avatar'),
             'isOwnProfile' => $isOwnProfile,
         ]);
     }

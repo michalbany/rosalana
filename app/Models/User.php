@@ -4,12 +4,16 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -23,6 +27,8 @@ class User extends Authenticatable
         'email',
         'password',
         'avatar',
+        'avatar_full',
+        'avatar_original',
         'bio',
         'rank_points',
         'rank_modal_shown',
@@ -40,6 +46,28 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('avatar')->singleFile();
+
+        $this->addMediaCollection('avatar_original')->singleFile();
+   
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('compressed')
+            ->performOnCollections('avatar')
+            ->width(1920) // Max šířka obrázku
+            ->height(1080) // Max výška obrázku
+            ->sharpen(10)
+            ->quality(20) // Nastavení kvality obrázku, což ovlivňuje kompresi
+            ->optimize()
+            ->nonQueued();
+
+            // dd($media->getUrl());
+    }
+
     /**
      * Elquent relationships
      */
@@ -48,7 +76,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
-    
+
     public function collections()
     {
         return $this->hasMany(Collection::class);
@@ -65,7 +93,7 @@ class User extends Authenticatable
     }
 
     /** polymorfni relace */
-    
+
     public function comments()
     {
         return $this->hasMany(Comment::class);

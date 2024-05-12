@@ -60,7 +60,7 @@ const showingNavigationDropdown = ref(false);
                                         class="text-sm w-12 h-12 cursor-pointer"
                                     >
                                         <AvatarImage
-                                            src="$page.props.auth.user.avatar"
+                                            :src="$page.props.auth.user.avatar"
                                             :alt="`${$page.props.auth.user.username}.profilephoto`"
                                         />
                                         <AvatarFallback

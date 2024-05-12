@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('avatar', 2048)->nullable();
+            $table->string('avatar_full', 2048)->nullable();
             $table->string('avatar_original', 2048)->nullable();
             $table->text('bio')->nullable();
             $table->integer('rank_points')->default(0);

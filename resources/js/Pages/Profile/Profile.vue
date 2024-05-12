@@ -37,7 +37,7 @@ const props = defineProps({
             </div>
             <Avatar size="lg">
                 <AvatarImage
-                    src="user.avatar"
+                    :src="user.avatar"
                     :alt="`${user.username}.profilephoto`"
                 />
                 <AvatarFallback
@@ -51,5 +51,6 @@ const props = defineProps({
 
         <!-- <p v-if="isOwnProfile">My profile</p>
         <p v-else>Not my profile</p> -->
+
     </AuthenticatedLayout>
 </template>
