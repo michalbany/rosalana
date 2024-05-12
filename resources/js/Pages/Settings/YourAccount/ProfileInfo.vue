@@ -1,6 +1,7 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import UpdateProfileInformationForm from "./Partials/UpdateProfileInformationForm.vue";
+import UploadAvatar from "./Partials/UploadAvatar.vue";
 import { Head } from "@inertiajs/vue3";
 import { Input } from "@/Components/ui/input";
 
@@ -46,6 +47,8 @@ defineProps({
         <hr class="mt-5" />
 
         <div class="mt-5 mb-10">
+            <UploadAvatar />
+
             <UpdateProfileInformationForm
                 :must-verify-email="mustVerifyEmail"
                 :status="status"

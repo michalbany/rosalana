@@ -43,28 +43,6 @@ const submit = () => {
 
 <template>
     <VeeForm @submit="submit" :validation-schema="schema">
-        <h3 class="pt-5 pb-2 font-medium">Profile image</h3>
-
-        <div class="flex pl-10 gap-5">
-            <Avatar size="lg">
-                <AvatarImage
-                    src="$page.props.auth.user.avatar"
-                    :alt="`${$page.props.auth.user.username}.profilephoto`"
-                />
-                <AvatarFallback
-                    >{{ $page.props.auth.user.first_name[0].toUpperCase()
-                    }}{{
-                        $page.props.auth.user.last_name[0].toUpperCase()
-                    }}</AvatarFallback
-                >
-            </Avatar>
-
-            <div class="flex flex-col gap-2">
-                <Button type="button" variant="secondary">Edit</Button>
-                <Button type="button" variant="outline">Upload</Button>
-                <Button type="button" variant="destructive">Remove</Button>
-            </div>
-        </div>
 
         <h3 class="pt-5 pb-2 font-medium">Name and Surname</h3>
         <div class="flex justify-between gap-5 flex-col lg:flex-row">

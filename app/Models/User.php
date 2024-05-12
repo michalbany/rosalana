@@ -22,7 +22,7 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
-        'profile_photo_path',
+        'avatar',
         'bio',
         'rank_points',
         'rank_modal_shown',

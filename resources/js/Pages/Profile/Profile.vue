@@ -10,7 +10,6 @@ const props = defineProps({
     isOwnProfile: Boolean,
 });
 
-console.log(props.user);
 </script>
 
 <template>
@@ -38,13 +37,13 @@ console.log(props.user);
             </div>
             <Avatar size="lg">
                 <AvatarImage
-                    src="$page.props.auth.user.avatar"
-                    :alt="`${$page.props.auth.user.username}.profilephoto`"
+                    src="user.avatar"
+                    :alt="`${user.username}.profilephoto`"
                 />
                 <AvatarFallback
-                    >{{ $page.props.auth.user.first_name[0].toUpperCase()
+                    >{{ user.first_name[0].toUpperCase()
                     }}{{
-                        $page.props.auth.user.last_name[0].toUpperCase()
+                        user.last_name[0].toUpperCase()
                     }}</AvatarFallback
                 >
             </Avatar>

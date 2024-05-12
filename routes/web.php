@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AvatarController;
 use Inertia\Inertia;
 
 // Route::get('/', function () {
@@ -56,6 +57,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/settings/password', function () {
             return Inertia::render('Settings/YourAccount/ChangePassword');
         })->name('.password.edit');
+        Route::post('/avatar/upload', [AvatarController::class, 'upload'])->name('.avatar.upload');
+        Route::delete('/avatar/delete', [AvatarController::class, 'delete'])->name('.avatar.delete');
         // toto necháme v auth.php
         // Route::put('/settings/password', [PasswordController::class, 'update'])->name('.password.update');
     });

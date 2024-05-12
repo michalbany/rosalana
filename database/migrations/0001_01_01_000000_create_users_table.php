@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->string('profile_photo_path', 2048)->nullable();
+            $table->string('avatar', 2048)->nullable();
+            $table->string('avatar_original', 2048)->nullable();
             $table->text('bio')->nullable();
             $table->integer('rank_points')->default(0);
             $table->boolean('rank_modal_shown')->default(false);

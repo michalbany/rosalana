@@ -28,6 +28,7 @@
         "radix-vue": "^1.7.3",
         "tailwind-merge": "^2.3.0",
         "tailwindcss-animate": "^1.0.7",
-        "vee-validate": "^4.12.6"
+        "vee-validate": "^4.12.6",
+        "vue-advanced-cropper": "^2.8.8"
     }
 }
