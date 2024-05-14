@@ -3,7 +3,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import UpdateProfileInformationForm from "./Partials/UpdateProfileInformationForm.vue";
 import UploadAvatar from "./Partials/UploadAvatar.vue";
 import { Head } from "@inertiajs/vue3";
-import { Input } from "@/Components/ui/input";
+import SettingsSearch from "../SettingsSearch.vue";
 
 defineProps({
     mustVerifyEmail: {
@@ -32,17 +32,7 @@ defineProps({
             nunc nec nunc ultricies ultricies.
         </template>
 
-        <div class="mt-8 relative items-center">
-            <Input
-                type="text"
-                placeholder="Search in Settings..."
-                class="pl-10 bg-transparent hover:bg-accent focus:bg-accent py-5"
-            />
-            <box-icon
-                name="search"
-                class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5"
-            />
-        </div>
+        <SettingsSearch />
 
         <hr class="mt-5" />
 
