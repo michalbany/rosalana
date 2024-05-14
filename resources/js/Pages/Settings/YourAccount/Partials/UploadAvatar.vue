@@ -40,7 +40,6 @@ const openUploadModal = (imageUrl) => {
         selectedImageURL.value = imageUrl;
         let parts = imageUrl.split('.');
         mimeType.value = `image/${parts[parts.length - 1]}`;
-        console.log(mimeType.value);
     }
 
     uploadModal.value = true;
@@ -52,6 +51,7 @@ const closeUploadModal = () => {
     selectedImage.value = null;
     selectedImageURL.value = null;
     URL.revokeObjectURL(selectedImageURL.value);
+    form.errors.avatar_original = null;
 }
 
 // Cropper fn
@@ -80,6 +80,7 @@ const onFileChange = (e) => {
 
 const uploadAvatar = () => {
     const result = cropper.value.getResult();
+    const MAX_SIZE = 2048;
 
     if (result && result.canvas) {
         const mime = selectedImage.value ? selectedImage.value.type : mimeType.value;
@@ -89,6 +90,11 @@ const uploadAvatar = () => {
             const file = new File([blob], `avatar.${extention}`, { type: mime })
             form.avatar = file;
             if (selectedImage.value) {
+                // MAX_SIZE exeption
+                if (selectedImage.value.size > MAX_SIZE) {
+                    form.errors.avatar_original = 'The image is too large. Max size is 2MB';
+                    return;
+                }
                 form.avatar_original = selectedImage.value;
             }
 
@@ -181,19 +187,19 @@ const deleteAvatar = () => {
     <Modal :show="confirmDeleteModal" @close="closeDeleteModal">
         <div class="p-6">
             <h2 class="text-lg font-medium text-gray-900">
-                    Are you sure you want to delete your avatar?
-                </h2>
+                Are you sure you want to delete your avatar?
+            </h2>
 
-                <p class="mt-1 text-sm text-gray-600">
-                    Once your avatar is deleted,  its resources and data will be permanently deleted.
-                </p>
+            <p class="mt-1 text-sm text-gray-600">
+                Once your avatar is deleted, its resources and data will be permanently deleted.
+            </p>
             <div class="mt-6 flex items-center gap-3">
                 <Button type="button" variant="secondary" @click="closeDeleteModal">Cancel</Button>
 
                 <Button type="submit" @click="deleteAvatar" variant="destructive">Remove</Button>
             </div>
         </div>
-        </Modal>
+    </Modal>
 </template>
 
 <style scoped>
