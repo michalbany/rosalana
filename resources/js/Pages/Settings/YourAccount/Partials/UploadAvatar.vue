@@ -80,7 +80,7 @@ const onFileChange = (e) => {
 
 const uploadAvatar = () => {
     const result = cropper.value.getResult();
-    const MAX_SIZE = 2048;
+    const MAX_SIZE = 2 * 1024 * 1024; // 2MB
 
     if (result && result.canvas) {
         const mime = selectedImage.value ? selectedImage.value.type : mimeType.value;

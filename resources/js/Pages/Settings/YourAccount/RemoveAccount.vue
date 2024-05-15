@@ -2,6 +2,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head } from "@inertiajs/vue3";
 import SettingsSearch from "../SettingsSearch.vue";
+import DeleteUserForm from "./Partials/DeleteUserForm.vue";
 </script>
 <template>
 <Head title="Settings" />
@@ -23,7 +24,7 @@ import SettingsSearch from "../SettingsSearch.vue";
     <hr class="mt-5" />
 
     <div class="mt-5 mb-10">
-        //
+        <DeleteUserForm class="max-w-xl"/>
     </div>
 </AuthenticatedLayout>
 </template>
