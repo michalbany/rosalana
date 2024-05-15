@@ -53,14 +53,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::get('/settings/profile', [ProfileController::class, 'edit'])->name('.profile.edit');
         Route::patch('/settings/profile', [ProfileController::class, 'update'])->name('.profile.update');
+        
+        Route::get('/settings/remove-account', function () {
+            return Inertia::render('Settings/YourAccount/RemoveAccount');
+        })->name('.remove-account');
+
         Route::delete('/settings/profile', [ProfileController::class, 'destroy'])->name('.profile.destroy');
         Route::get('/settings/password', function () {
             return Inertia::render('Settings/YourAccount/ChangePassword');
         })->name('.password.edit');
+        
         Route::post('/avatar/upload', [AvatarController::class, 'upload'])->name('.avatar.upload');
         Route::delete('/avatar/delete', [AvatarController::class, 'delete'])->name('.avatar.delete');
-        // toto necháme v auth.php
-        // Route::put('/settings/password', [PasswordController::class, 'update'])->name('.password.update');
+
     });
 });
 

@@ -71,7 +71,7 @@ import SettingsSearch from "./SettingsSearch.vue";
                         <box-icon name="trash-alt" type="solid" class="fill-primary w-8" />
                         <div>
                             <Button class="text-md font-medium p-0 h-auto" variant="anchor" :as="Link"
-                                :href="route('dashboard')">
+                                :href="route('settings.remove-account')">
                                 Remove account<box-icon name='right-arrow-alt' class="-rotate-45" ></box-icon>
                             </Button>
                             <p class="text-zinc-600 text-sm">Update your profile information</p>

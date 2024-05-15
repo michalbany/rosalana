@@ -25,7 +25,7 @@ export const settingsSearchData = [
         title: "Remove account",
         description: "Remove your account",
         searchTags: ["remove", "account", "delete"],
-        link: "login",
+        link: "settings.remove-account",
         section: "Your account"
     },
     {
