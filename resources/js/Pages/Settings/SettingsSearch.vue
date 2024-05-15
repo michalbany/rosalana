@@ -1,10 +1,10 @@
 <script setup>
 import { Input } from "@/Components/ui/input";
-import { Link } from "@inertiajs/vue3";
+import { Link, router } from "@inertiajs/vue3";
 import { ref, computed } from "vue";
 import { settingsSearchData } from "@/data/settingsSearchData";
 
-const searchQuery = ref("");
+const searchQuery = ref("p");
 const activeIndex = ref(-1);
 
 const filterData = computed(() => {
@@ -34,12 +34,18 @@ const onKeyDown = (event) => {
 
         if (activeIndex.value < filterData.value.length - 1) {
             activeIndex.value++;
+        } else {
+            activeIndex.value = 0;
         }
+
     } else if (event.key === "ArrowUp") {
         event.preventDefault();
         if (activeIndex.value > 0) {
             activeIndex.value--;
+        } else {
+            activeIndex.value = filterData.value.length - 1;
         }
+
     } else if (event.key === "Enter" && activeIndex.value !== -1) {
         event.preventDefault();
         selectActiveItem();
@@ -50,10 +56,7 @@ const selectActiveItem = () => {
     if (activeIndex.value >= 0) {
         const item = filterData.value[activeIndex.value];
         if (item) {
-            const linkElement = document.querySelector(`[data-id="${item.title}"]`);
-            if (linkElement) {
-                linkElement.click();
-            }
+            router.visit(route(item.link));
         }
     }
 };
@@ -85,18 +88,16 @@ const removeEListeners = () => {
 
         <div
             v-auto-animate
-            class="absolute bg-accent rounded-b-md space-y-3 z-20 w-full px-10 py-3"
-            :class="{ 'py-0': !filterData.length }"
+            class="absolute bg-accent rounded-b-md z-20 w-full"
         >
             <Link
-                class="block hover:text-action transition-color duration-200 ease-in-out"
+                class="block hover:text-action last-of-type:rounded-b-md transition-color py-3 px-10 duration-200 ease-in-out"
                 v-for="(item, index) in filterData"
                 :key="item.title"
-                :data-id="item.title"
                 :href="route(item.link)"
-                :class="{ 'text-action': index === activeIndex }"
-            >
-                <h3 class="text-md font-medium">{{ item.title }}</h3>
+                :class="{ 'text-action bg-action/20': index === activeIndex }"
+            >   
+                <h3 class="text-md font-medium flex justify-between items-center">{{ item.title }} <span v-if="index === activeIndex" class="text-xs font-normal text-zinc-500 hidden sm:block">Settings/{{ item.section }}</span></h3>
                 <p class="text-zinc-600 text-sm">{{ item.description }}</p>
             </Link>
         </div>
