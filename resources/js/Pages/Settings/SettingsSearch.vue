@@ -4,7 +4,7 @@ import { Link, router } from "@inertiajs/vue3";
 import { ref, computed } from "vue";
 import { settingsSearchData } from "@/data/settingsSearchData";
 
-const searchQuery = ref("p");
+const searchQuery = ref("");
 const activeIndex = ref(-1);
 
 const filterData = computed(() => {
