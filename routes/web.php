@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\AvatarController;
 use Inertia\Inertia;
+use App\Http\Controllers\Auth\AvatarController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HomeController;
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [
@@ -26,6 +27,10 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');  
+
+Route::get('/', [HomeController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 // @todo: zeptat se chata jak to dělat když potřebuju na stránku data z více zdrojů (např. posts a collections, nebo posts a users to follow)
 
