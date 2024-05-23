@@ -9,10 +9,24 @@ use App\Services\FeedService;
 
 class HomeController extends Controller
 {
+    protected $feedService;
+
+    public function __construct(FeedService $feedService)
+    {
+        $this->feedService = $feedService;       
+    }
+
     public function index()
     {
-        return Inertia::render('Dashboard', [
+        $parameters = [
             //
+        ];
+
+        $feed = $this->feedService->getFeed($parameters);
+
+
+        return Inertia::render('Dashboard', [
+            'feed' => $feed,       
         ]);
     }
 }
