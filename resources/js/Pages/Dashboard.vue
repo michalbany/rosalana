@@ -2,8 +2,34 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head } from "@inertiajs/vue3";
 import PostFeed from "@/Components/PostFeed.vue";
-</script>
+import { ref, onMounted, onUnmounted } from "vue";
 
+const loadMoreTrigger = ref(false);
+const canLoadMore = ref(false);
+
+const loadMore = () => {
+    if (canLoadMore.value) {
+        loadMoreTrigger.value = !loadMoreTrigger.value;
+        canLoadMore.value = false;
+    }
+}
+
+const handleScroll = () => {
+    const buttomOfWindow = window.innerHeight + window.scrollY >= document.documentElement.offsetHeight - 50;
+    if (buttomOfWindow) {
+        canLoadMore.value = true;
+        loadMore();
+    }
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
+</script>
 <template>
     <Head title="Dashboard" />
 
@@ -25,7 +51,7 @@ import PostFeed from "@/Components/PostFeed.vue";
 
         <hr class="mt-5" />
 
-        <PostFeed />
+        <PostFeed :trigger="loadMoreTrigger" @loaded="canLoadMore = false" />
 
     </AuthenticatedLayout>
 </template>
