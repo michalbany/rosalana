@@ -71,3 +71,20 @@ export const formatMonthYear = (dateString, { shortMonth = false, locale = 'en-U
     // Kapitalizace prvního písmene
     return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
 };
+
+
+export const formatNumber = (number, full = false) => {
+    if (!full) {
+        if (number > 1000000) {
+            return `${new Intl.NumberFormat().format((number / 1000000).toFixed(1))}M`;
+        }
+        if (number > 1000) {
+            return `${(number / 1000).toFixed(1)}K`;
+        }
+        if (number > 100) {
+            return `${number.toFixed(0)}`;
+        }
+    }
+
+    return new Intl.NumberFormat().format(number);
+}

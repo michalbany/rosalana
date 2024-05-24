@@ -4,7 +4,6 @@ import { usePage } from "@inertiajs/vue3";
 
 const { feed } = usePage().props;
 
-console.log(feed);
 </script>
 <template>
     <div class="space-y-5 mt-5">

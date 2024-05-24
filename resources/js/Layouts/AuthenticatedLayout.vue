@@ -8,7 +8,7 @@ import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import { Link } from "@inertiajs/vue3";
 import { Avatar, AvatarFallback, AvatarImage } from "@/Components/ui/avatar";
 import { Button } from "@/Components/ui/button";
-import Badge from "@/Components/ui/badge/Badge.vue";
+import { Badge } from "@/Components/ui/badge";
 
 const showingNavigationDropdown = ref(false);
 </script>
@@ -21,7 +21,7 @@ const showingNavigationDropdown = ref(false);
         <nav class="w-full sticky top-0 bg-white sm:bg-transparent z-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-24">
-                    <Link href="/">
+                    <Link href="/" showProgress="true">
                         <ApplicationLogo class="w-36 fill-primary" />
                     </Link>
 

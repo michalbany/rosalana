@@ -15,8 +15,11 @@
     --orange: 14 100% 70%;
     --orange-foreground: 0 0% 98%;
     
-    --yellow: 40 100% 66% 
+    --yellow: 40 100% 66%;
     --yellow-foreground: 0 0% 98%;
+
+    --green: 141 63% 40%;
+    --green-foreground: 0 0% 98%;
  
     --purple: 243 100% 68%;
     --purple-foreground: 0 0% 98%;
