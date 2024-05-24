@@ -3,11 +3,25 @@
 namespace App\Services;
 
 use App\Models\Post;
+use Illuminate\Support\Facades\Cache;
 
 class FeedService
 {
-    public function getFeed(array $param)
+    public function getFeed(array $param, $limit = 5, $offset = 0)
     {
+        // $cacheKey = $this->generateCacheKey($param, $limit, $offset);
+
+        // Získat čas posledního požadavku
+        // $lastRequestTime = Cache::get($cacheKey);
+
+        // Pokud byl požadavek proveden příliš brzy, vrátit výjimku
+        // if ($lastRequestTime && now()->diffInSeconds($lastRequestTime) < 2) {
+        //     throw new \Exception('Request frequency limit exceeded', 429);
+        // }
+
+        // Uložit čas aktuálního požadavku
+        // Cache::put($cacheKey, now(), 60); // Cache na 60 sekund
+
         $query = Post::query();
 
         // parametr pro výpis na profilu
@@ -26,10 +40,19 @@ class FeedService
         }
 
         // Když je param prázdný, vypíše se stejně všechno
-        return $query->with(['user' => function ($query) {
+        $posts = $query->with(['user' => function ($query) {
             $query->select('id', 'username', 'avatar', 'first_name', 'last_name', 'rank_points', 'created_at');
-        }])->get();
+        }])->limit($limit)->offset($offset)->get();
+        
+        if ($posts->isEmpty()) {
+            throw new \Exception('No more posts to show', 404);
+        }
 
+        return $posts;
+    }
 
+    private function generateCacheKey(array $param, $offset)
+    {
+        return 'feed_' . md5(json_encode($param)) . '_offset_' . $offset;
     }
 }

@@ -34,6 +34,7 @@ defineProps({
         </div>
 
         <a href="/settings" class="block">
+            <p class="text-sm text-gray-500">{{ post.id }}</p>
             <h2 class="text-lg font-semibold truncate">{{ post.title }}</h2>
             <p class="text-sm text-gray-500">{{ post.description }}</p>
         </a>
@@ -42,7 +43,7 @@ defineProps({
             <div class="space-x-3">
                 <Button variant="icon" class="p-0">
                     <box-icon name='heart' type="solid" class="w-5 fill-destructive" />
-                    {{ formatNumber(1330000000) }}
+                    {{ formatNumber(13000000000) }}
                 </Button>
                 <Button variant="icon" class="p-0">
                     <box-icon name='show' type="solid" class="w-5 fill-green" />

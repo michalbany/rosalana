@@ -5,18 +5,27 @@ import Dropdown from "@/Components/Dropdown.vue";
 import DropdownLink from "@/Components/DropdownLink.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
-import { Link } from "@inertiajs/vue3";
+import { Link, usePage } from "@inertiajs/vue3";
 import { Avatar, AvatarFallback, AvatarImage } from "@/Components/ui/avatar";
 import { Button } from "@/Components/ui/button";
 import { Badge } from "@/Components/ui/badge";
+import { computed } from "vue";
+
 
 const showingNavigationDropdown = ref(false);
+
+const flash_error = computed(() => {
+    return usePage().props.flash.error
+});
+
 </script>
 
 <template>
     <div
         class="min-h-screen bg-white selection:bg-action selection:text-accent"
     >
+        <!-- Flash Message -->
+        {{ flash_error }}
         <!-- Navigace -->
         <nav class="w-full sticky top-0 bg-white sm:bg-transparent z-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

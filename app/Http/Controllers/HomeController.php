@@ -13,20 +13,33 @@ class HomeController extends Controller
 
     public function __construct(FeedService $feedService)
     {
-        $this->feedService = $feedService;       
+        $this->feedService = $feedService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $feed = [];
+        $offset = $request->header('offset', 0);
+
         $parameters = [
-            //
+            // vaše parametry
         ];
 
-        $feed = $this->feedService->getFeed($parameters);
+        try {
+            $feed = $this->feedService->getFeed($parameters, 5, $offset);
 
+        } catch (\Exception $e) {
+            $error_message = $e->getMessage();
+        }
 
         return Inertia::render('Dashboard', [
-            'feed' => $feed,       
+            'feed' => Inertia::lazy(fn () => $feed),
+            'offset' => Inertia::lazy(fn () => $offset + count($feed)),
+            'errors' => $error_message ?? null,
+            'flash' => [
+                'error' => $error_message ?? null
+            ]
         ]);
+
     }
 }
