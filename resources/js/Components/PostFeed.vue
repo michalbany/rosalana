@@ -6,21 +6,17 @@ import { onMounted } from "vue";
 import PostAlt from "@/Components/PostAlt.vue";
 import { ref } from "vue";
 import { watchEffect } from "vue";
+import { useFlashStore } from "@/stores/flash";
 
 const feed = ref(null);
 const showSkeleton = ref(true);
+const flashStore = useFlashStore();
 
 const props = defineProps({
     trigger: Boolean,
 });
 
 const emit = defineEmits(["loaded"]);
-
-watchEffect(() => {
-    if (props.trigger) {
-        loadMorePosts();
-    }
-});
 
 const throttle = (func, wait = 3000) => {
     let timeout = null;
@@ -34,7 +30,6 @@ const throttle = (func, wait = 3000) => {
     };
 };
 
-
 onMounted(() => {
     router.reload({
         only: ["feed", "offset"],
@@ -45,14 +40,18 @@ onMounted(() => {
             feed.value = page.props.feed;
             showSkeleton.value = false;
         },
-        onError: (error) => console.log(error),
+        onError: (error) => {
+            showSkeleton.value = false;
+            flashStore.showFlash('Time to write your own!');
+            console.warn(error);
+        }
     });
 });
 
 
 const loadMorePosts = throttle(() => {
     router.reload({
-        only: ["feed", "offset", "flash"],
+        only: ["feed", "offset", "flash", "errors"],
         headers: {
             "offset": usePage().props.offset,
         },
@@ -64,14 +63,22 @@ const loadMorePosts = throttle(() => {
             feed.value.push(...page.props.feed);
             showSkeleton.value = false;
         },
-
-        onError: (error) => console.log(error),
+        onError: (error) => {
+            showSkeleton.value = false;
+            console.warn(error);
+            flashStore.showFlash('Time to write your own!');
+        }
     });
+});
+
+watchEffect(() => {
+    if (props.trigger) {
+        loadMorePosts();
+    }
 });
 
 </script>
 <template>
-    <button @click="loadTest">CLICK TO TEST</button>
     <div class="mt-5" >
         <div class="space-y-5" >
             <Post v-for="post in feed" :key="post.id" :post="post" />

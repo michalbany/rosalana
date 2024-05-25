@@ -8,8 +8,11 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import VeeValidatePlugin from './includes/validation';
 import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
+import { createPinia } from 'pinia';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+
+const pinia = createPinia();
 
 createInertiaApp({
     title: (title) => `${title} | ${appName}`,
@@ -19,12 +22,12 @@ createInertiaApp({
             .component('box-icon', 'box-icon')
             .use(plugin)
             .use(ZiggyVue)
+            .use(pinia)
             .use(VeeValidatePlugin)
             .use(autoAnimatePlugin)
             .mount(el);
     },
     progress: {
         color: '#645BFF',
-        showSpinner: true,
     },
 });
