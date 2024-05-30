@@ -1,44 +1,16 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 import Dropdown from "@/Components/Dropdown.vue";
 import DropdownLink from "@/Components/DropdownLink.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
-import { Link, usePage } from "@inertiajs/vue3";
+import { Link } from "@inertiajs/vue3";
 import { Avatar, AvatarFallback, AvatarImage } from "@/Components/ui/avatar";
 import { Button } from "@/Components/ui/button";
 import { Badge } from "@/Components/ui/badge";
-import { useToast } from '@/Components/ui/toast/use-toast'
-import { Toaster } from '@/Components/ui/toast'
-import { watchEffect } from "vue";
-import { useFlashStore } from '@/stores/flash';
 
 const showingNavigationDropdown = ref(false);
-
-const flashStore = useFlashStore();
-
-const { toast } = useToast();
-
-
-
-// @error: Pokud během zobrazení flash message dojde k navigaci na jinou stránku
-// @explain: Flash message musí fungovat uplně mimo layout a nesmí se unmountout při redirectu.
-watchEffect(() => {
-    const flash = usePage().props.flash;
-
-    if (!flashStore.show) {
-        return;
-    }
-
-    if (flash.error) {
-        toast({
-            title: flash.error,
-            description: flashStore.message,
-        });
-        flashStore.hideFlash();
-    }
-})
 
 </script>
 
@@ -46,8 +18,6 @@ watchEffect(() => {
     <div
         class="min-h-screen bg-white selection:bg-action selection:text-accent"
     >
-        <!-- Flash Message -->
-        <Toaster />
    
 
         <!-- Navigace -->

@@ -18,5 +18,7 @@
     </head>
     <body class="font-sans antialiased">
         @inertia
+        <!-- FlashMessage -->
+        <div id="flash-message"></div>
     </body>
 </html>
