@@ -47,7 +47,7 @@ class FeedService
         // Když je param prázdný, vypíše se stejně všechno
         $posts = $query->with(['user' => function ($query) {
             $query->select('id', 'username', 'avatar', 'first_name', 'last_name', 'rank_points', 'created_at');
-        }])->limit($limit)->offset($offset)->get();
+        }])->limit($limit)->offset($offset)->latest()->get();
         
         if ($posts->isEmpty()) {
             throw new \Exception('No more posts to show', 404);

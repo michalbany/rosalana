@@ -44,7 +44,6 @@ onMounted(() => {
             showSkeleton.value = false;
             flashStore.showFlash();
             console.warn(error);
-            console.log(usePage().props.feed)
         }
     });
 });
