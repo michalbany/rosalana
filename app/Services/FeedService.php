@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Post;
 use Illuminate\Support\Facades\Cache;
+use Inertia\Inertia;
 
 class FeedService
 {
@@ -21,6 +22,10 @@ class FeedService
 
         // Uložit čas aktuálního požadavku
         // Cache::put($cacheKey, now(), 60); // Cache na 60 sekund
+
+        Inertia::render('Profile/Profile', [
+            'Hello' => 'World',
+        ]);
 
         $query = Post::query();
 

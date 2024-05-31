@@ -37,13 +37,14 @@ onMounted(() => {
             "offset": 0,
         },
         onSuccess: (page) => {
-            feed.value = page.props.feed;
+            feed.value = usePage().props.feed;
             showSkeleton.value = false;
         },
         onError: (error) => {
             showSkeleton.value = false;
-            flashStore.showFlash('Time to write your own!');
+            flashStore.showFlash();
             console.warn(error);
+            console.log(usePage().props.feed)
         }
     });
 });

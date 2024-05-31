@@ -4,11 +4,41 @@ import { Head } from "@inertiajs/vue3";
 import { Link } from "@inertiajs/vue3";
 import { Avatar, AvatarFallback, AvatarImage } from "@/Components/ui/avatar";
 import { Button } from "@/Components/ui/button";
+import PostFeed from "@/Components/PostFeed.vue";
+import { ref } from "vue";
+import { onMounted } from "vue";
+import { onUnmounted } from "vue";
+
+const loadMoreTrigger = ref(false)
+const canLoadMore = ref(false)
 
 const props = defineProps({
     user: Object,
     isOwnProfile: Boolean,
 });
+
+const loadMore = () => {
+    if (canLoadMore.value) {
+        loadMoreTrigger.value = !loadMoreTrigger.value
+        canLoadMore.value = false
+    }
+}
+
+const handleScroll = () => {
+    const buttomOfWindow = window.innerHeight + window.scrollY >= document.documentElement.offsetHeight - 50;
+    if (buttomOfWindow) {
+        canLoadMore.value = true
+        loadMore()
+    }
+}
+
+onMounted(() => {
+    window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
+})
 
 </script>
 
@@ -48,6 +78,8 @@ const props = defineProps({
                 >
             </Avatar>
         </div>
+
+        <PostFeed :trigger="loadMoreTrigger" @loaded="canLoadMore = false" />
 
         <!-- <p v-if="isOwnProfile">My profile</p>
         <p v-else>Not my profile</p> -->

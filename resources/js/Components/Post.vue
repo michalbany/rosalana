@@ -29,12 +29,11 @@ defineProps({
                         </DropdownCall>
                     </template>
                 </Dropdown>
-                
             </div>
         </div>
 
         <a href="/settings" class="block">
-            <p class="text-sm text-gray-500">{{ post.id }}</p>
+            <p>{{ post.id }}</p>
             <h2 class="text-lg font-semibold truncate">{{ post.title }}</h2>
             <p class="text-sm text-gray-500">{{ post.description }}</p>
         </a>

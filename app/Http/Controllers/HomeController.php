@@ -29,16 +29,15 @@ class HomeController extends Controller
             $feed = $this->feedService->getFeed($parameters, 5, $offset);
 
         } catch (\Exception $e) {
-            $error_message = $e->getMessage();
             session()->flash('error', $e->getMessage());
         }
 
         return Inertia::render('Dashboard', [
             'feed' => Inertia::lazy(fn () => $feed),
             'offset' => Inertia::lazy(fn () => $offset + count($feed)),
-            'errors' => $error_message ?? null,
+            'errors' => session()->get('error'),
             'flash' => [
-                'error' => fn () => session()->get('error'),
+                'error' => fn () => session()->pull('error'),
             ]
         ]);
 
