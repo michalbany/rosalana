@@ -2,7 +2,7 @@ export const settingsSearchData = [
     {
         title: "Profile Information",
         description: "Update your profile information",
-        searchTags: ["profile", "information", "update", "avatar", "image"],
+        searchTags: ["profile", "information", "update", "avatar", "image", "name", "bio", "photo"],
         link: "settings.profile.edit",
         section: "Your account"
     },
